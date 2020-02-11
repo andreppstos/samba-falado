@@ -5,7 +5,7 @@
 {% block html_attribs %} lang="pt-BR" {% endblock html_attribs %} 
 
 
-{% block title %} Flask Model {% endblock title %}
+{% block title %} Samba Falado {% endblock title %}
 
 
 {% block metas %} 
@@ -28,16 +28,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ url_for('main.index') }}">Samba Falado</a>
+          <a class="navbar-brand" href="{{ url_for('main.home') }}">Samba Falado</a>
         </div>
         <div class="navbar-collapse collapse">
           
           {% if current_user.is_authenticated %}
           <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('letras.enviarLetra') }}">Enviar Letra</a></li>
+            <li><a href="{{ url_for('letras.enviar') }}">Enviar Letra</a></li>
           </ul>
           <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('usuarios.account') }}">Minha Conta</a></li>
+            <li><a href="{{ url_for('usuarios.perfil') }}">Meu Perfil</a></li>
           </ul>
           <ul class="nav navbar-nav">
             <li><a href="{{ url_for('usuarios.logout') }}">Logout</a></li>

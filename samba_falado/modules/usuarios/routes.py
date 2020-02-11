@@ -12,7 +12,7 @@ usuarios = Blueprint('usuarios', __name__)
 @usuarios.route('/cadastro', methods=['GET','POST'])
 def cadastro():
     if current_user.is_authenticated:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.home'))
     form = Cadastro()
     if form.validate_on_submit():
         hashed_pw = bcrypt.generate_password_hash(form.senha.data).decode('utf-8')
@@ -38,7 +38,7 @@ def login():
             next_page = request.args.get('next')
             flash('Login efetuado!')
             print('Login efetuado!')
-            return redirect(next_page) if next_page else redirect(url_for('main.index'))
+            return redirect(next_page) if next_page else redirect(url_for('main.home'))
         elif user:
             flash('Senha não confere')
             print('Senha não confere')
@@ -51,10 +51,10 @@ def login():
 @usuarios.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 
-@usuarios.route('/minha-conta')
+@usuarios.route('/perfil')
 @login_required
-def account():
-    return render_template('usuarios/minha_conta.html')
+def perfil():
+    return render_template('usuarios/perfil.html')

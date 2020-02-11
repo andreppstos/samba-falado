@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="content-section">
+
+<pre>
+<h4>{{ letra.titulo }} ({{ letra.compositores }})</h4>
+<h5>{{ letra.letra }}</h5>
+<small>
+Data de envio: {{ letra.data_envio.date() }}
+Enviado por: {{ letra.autor.nome }}
+</small>
+{% if letra.autor ==  current_user %}
+<a class="btn btn-secondary btn-sm m-1" href="{{ url_for('letras.editar', letra_id=letra.id) }}"> Editar </a> <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('letras.excluir', letra_id=letra.id) }}"> Excluir </a>
+{% endif %}
+</pre>
+
+</div>
+{% endblock %}

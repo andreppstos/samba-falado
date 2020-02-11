@@ -7,10 +7,9 @@ main = Blueprint('main', __name__)
 
 @main.route('/home')
 @main.route('/')
-def index():
-    letras = Letra.query.all()
-    autor = Usuario.query.all()
-    return render_template('main/index.html', letras=letras, autor=autor)
+def home():
+    letras = Letra.query.order_by(Letra.data_envio.desc()).all()
+    return render_template('main/home.html', letras=letras)
 
 
 @main.route('/about')

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="content-section">
+
+
+{% for letra in letras %}
+<pre>
+<a href="{{ url_for('letras.letra', letra_id=letra.id) }}"><h4>{{ letra.titulo }} ({{ letra.compositores }})</h4></a> 
+<h5>{{ letra.letra }}</h5>
+<small>
+Data de envio: {{ letra.data_envio.date() }}
+Enviado por: {{ letra.autor.nome }}
+</small>
+
+</pre>
+{% endfor %}
+
+</div>
+</div>
+{% endblock %}

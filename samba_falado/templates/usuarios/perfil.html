@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="content-section"><h1>{{ current_user.nome }}</h1>
+        <br>
+        <h4>Letras enviadas:</h4>
+        {% for letra in current_user.letras %}
+        <a href="{{ url_for('letras.letra', letra_id=letra.id) }}"> {{ letra.titulo }} ({{ letra.compositores }})</a>
+        <br>
+        {% endfor %}
+    </div>
+    
+</div>
+{% endblock %}

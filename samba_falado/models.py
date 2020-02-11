@@ -28,7 +28,7 @@ class Usuario(db.Model, UserMixin):
     email = db.Column(db.String, nullable=False, unique=True)
     senha = db.Column(db.String, nullable=False)
     foto = db.Column(db.String, nullable=False, default='default.jpg')
-    letras = db.relationship('Letra', backref='enviado por', lazy=True)
+    letras = db.relationship('Letra', backref='autor', lazy=True)
 
     def __repr__(self):
         return f"Usuario('{self.nome}','{self.email}')"
